@@ -1,0 +1,11 @@
+name             'chef_haproxy'
+maintainer       'Raintank, Inc.'
+maintainer_email 'cookbooks@raintank.io'
+license          'Apache 2.0'
+description      'Installs/Configures chef_haproxy'
+long_description 'Installs/Configures chef_haproxy'
+version          '0.1.0'
+
+depends 'chef_base', '~> 0.1.0'
+depends 'haproxy', '~> 1.6.6'
+depends 'logrotate', '~> 1.9.1'
