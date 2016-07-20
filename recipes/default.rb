@@ -19,3 +19,4 @@
 
 include_recipe "chef_base::default"
 include_recipe "chef_haproxy::install"
+include_recipe "chef_haproxy::collectd"
