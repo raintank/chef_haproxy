@@ -58,8 +58,10 @@ node['chef_haproxy']['haproxy_services'].each do |service|
   end
   servers.compact!
 
+  fe_bind_port = service[:fe_bind_port] || service[:bind_port]
+
   unless servers.nil?
-    frontend_parms = [ "maxconn #{service[:maxconn]}", "bind 0.0.0.0:#{service[:bind_port]}", "default_backend servers-#{service[:tag]}" ]
+    frontend_parms = [ "maxconn #{service[:maxconn]}", "bind 0.0.0.0:#{fe_bind_port}", "default_backend servers-#{service[:tag]}" ]
     frontend_parms += service[:frontend_extra] if !service[:frontend_extra].nil?
     backend_parms = [ "maxconn #{service[:maxconn]}", "balance #{service[:balance]}" ]
     backend_parms += service[:backend_extra] if !service[:backend_extra].nil?
