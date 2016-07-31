@@ -23,7 +23,8 @@ include_recipe "haproxy::install_package"
 local_zone = node['gce']['instance']['zone'] || "root"
 
 node['chef_haproxy']['haproxy_services'].each do |service|
-  members = search("node", "tags:#{service[:tag]} AND chef_environment:#{node.chef_environment}") || []
+  search_str = service[:search] || "tags:#{service[:tag]} AND chef_environment:#{node.chef_environment}"
+  members = search("node", search_str) || []
   next if members.empty?
 
   members.map! do |member|
