@@ -31,7 +31,9 @@ node['chef_haproxy']['haproxy_services'].each do |service|
     server_ip = begin
       if member.attribute?('cloud_v2')
 	if node.attribute?('cloud_v2') && (member['cloud_v2']['provider'] == node['cloud_v2']['provider'])
-          if member['cloud_v2']['local_ipv4'].is_a?(Array)
+	  if node.attribute?('gce')
+	    member['cloud_v2']['local_hostname']
+          elsif member['cloud_v2']['local_ipv4'].is_a?(Array)
             member['cloud_v2']['local_ipv4'].first
           else
             member['cloud_v2']['local_ipv4']

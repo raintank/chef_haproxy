@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@raintank.io'
 license          'Apache 2.0'
 description      'Installs/Configures chef_haproxy'
 long_description 'Installs/Configures chef_haproxy'
-version          '0.1.0'
+version          '0.1.1'
 
 depends 'chef_base', '~> 0.1.0'
 depends 'haproxy', '~> 1.6.6'
